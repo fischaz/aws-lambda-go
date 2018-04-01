@@ -1,0 +1,100 @@
+{
+  "Records": [{
+    "eventSource": "aws:ses",
+    "eventVersion": "1.0",
+    "ses": {
+      "mail": {
+        "timestamp": "2018-03-31T01:06:56.352Z",
+        "source": "user@example.com",
+        "messageId": "jfkjfirejf3043jf49r4frlekgj49j34jfrjejfr",
+        "destination": ["dest@dest.com", "user@example.com"],
+        "headersTruncated": false,
+        "headers": [{
+          "name": "Return-Path",
+          "value": "<user@example.com>"
+        }, {
+          "name": "X-SES-Spam-Verdict",
+          "value": "PASS"
+        }, {
+          "name": "X-SES-Virus-Verdict",
+          "value": "PASS"
+        }, {
+          "name": "Received-SPF",
+          "value": "pass (spfCheck: domain of example.com designates 1.2.3.4 as permitted sender) client-ip=1.2.3.4; envelope-from=user@example.com; helo=mail.example.com;"
+        }, {
+          "name": "Authentication-Results",
+          "value": "amazonses.com; spf=pass (spfCheck: domain of example.com designates 1.2.3.4 as permitted sender) client-ip=1.2.3.4; envelope-from=user@example.com; helo=mail.example.com; dkim=pass header.i=@example.com;"
+        }, {
+          "name": "Received",
+          "value": "by mail.example.com with SMTP id dasdefetdf for <dest@dest.com>; Fri, 30 Mar 2018 18:06:56 -0700 (PDT)"
+        }, {
+          "name": "Return-Path",
+          "value": "<user@example.com>"
+        }, {
+          "name": "X-Relaying-Domain",
+          "value": "example.com"
+        }, {
+          "name": "Date",
+          "value": "Sat, 31 Mar 2018 01:06:52 +0000"
+        }, {
+          "name": "From",
+          "value": "user@example.com"
+        }, {
+          "name": "To",
+          "value": "dest@dest.com, user@example.com"
+        }, {
+          "name": "Subject",
+          "value": "test subject"
+        }, {
+          "name": "Message-ID",
+          "value": "<5abedf2c.dsdwdedwefrefrfr%user@example.com>"
+        }, {
+          "name": "User-Agent",
+          "value": "mailx"
+        }, {
+          "name": "MIME-Version",
+          "value": "1.0"
+        }, {
+          "name": "Content-Type",
+          "value": "text/plain; charset=us-ascii"
+        }, {
+          "name": "Content-Transfer-Encoding",
+          "value": "7bit"
+        }],
+        "commonHeaders": {
+          "returnPath": "user@example.com",
+          "from": ["user@example.com"],
+          "date": "Sat, 31 Mar 2018 01:06:52 +0000",
+          "to": ["dest@dest.com", "user@example.com"],
+          "messageId": "<5abedf2c.SyRDzyJl29zPh8Pz%user@example.com>",
+          "subject": "test subject"
+        }
+      },
+      "receipt": {
+        "timestamp": "2018-03-31T01:06:56.352Z",
+        "processingTimeMillis": 716,
+        "recipients": ["dest@dest.com"],
+        "spamVerdict": {
+          "status": "PASS"
+        },
+        "virusVerdict": {
+          "status": "PASS"
+        },
+        "spfVerdict": {
+          "status": "PASS"
+        },
+        "dkimVerdict": {
+          "status": "PASS"
+        },
+        "dmarcVerdict": {
+          "status": "PASS"
+        },
+        "action": {
+          "type": "Lambda",
+          "functionArn": "arn:aws:lambda:us-west-2:123456789012:function:xxxxxx",
+          "invocationType": "RequestResponse"
+        }
+      }
+    }
+  }]
+}

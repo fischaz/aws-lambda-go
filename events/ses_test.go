@@ -8,19 +8,26 @@ import (
 )
 
 func TestSESEventMarshaling(t *testing.T) {
-	inputJSON := readJsonFromFile(t, "./testdata/ses-event.json")
-
-	var inputEvent SimpleEmailEvent
-	if err := json.Unmarshal(inputJSON, &inputEvent); err != nil {
-		t.Errorf("could not unmarshal event. details: %v", err)
+	testFiles := []string {
+		"./testdata/ses-event.json",
+		"./testdata/ses-event-20180331.json",
 	}
 
-	outputJSON, err := json.Marshal(inputEvent)
-	if err != nil {
-		t.Errorf("could not marshal event. details: %v", err)
-	}
+	for _, testFile := range testFiles {
+		inputJSON := readJsonFromFile(t, testFile)
 
-	test.AssertJsonsEqual(t, inputJSON, outputJSON)
+		var inputEvent SimpleEmailEvent
+		if err := json.Unmarshal(inputJSON, &inputEvent); err != nil {
+			t.Errorf("could not unmarshal event %s. details: %v", testFile, err)
+		}
+
+		outputJSON, err := json.Marshal(inputEvent)
+		if err != nil {
+			t.Errorf("could not marshal event %s. details: %v", testFile, err)
+		}
+
+		test.AssertJsonsEqual(t, inputJSON, outputJSON)
+	}
 }
 
 func TestSESMarshalingMalformedJson(t *testing.T) {
